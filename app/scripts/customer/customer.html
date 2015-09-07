@@ -1,0 +1,66 @@
+<div style="width:100%" layout="row">
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-sm')">
+
+        <md-toolbar layout="row" class="md-whiteframe-z1">
+            <h1>Customers</h1>
+        </md-toolbar>
+        <md-input-container style="margin-bottom:0">
+            <label>Customer Name</label>
+            <input required name="customerName" ng-model="_ctrl.filterText" ng-change="_ctrl.filter()">
+        </md-input-container>
+        <md-list>
+            <md-list-item ng-repeat="it in _ctrl.customers">
+                <md-button ng-click="_ctrl.selectCustomer(it, $index)" ng-class="{'selected' : it === _ctrl.selected }">
+                    {{it.name}}
+                </md-button>
+            </md-list-item>
+        </md-list>
+    </md-sidenav>
+
+    <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+
+        <md-toolbar layout="row" class="md-whiteframe-z1">
+            <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
+                <md-icon md-svg-icon="menu"></md-icon>
+            </md-button>
+            <h1>{{ _ctrl.selected.name }}</h1>
+        </md-toolbar>
+
+        <md-content flex id="content">
+            <div layout="column" style="width:50%">
+                <br />
+                <md-content layout-padding class="autoScroll">
+                    <md-input-container>
+                        <label>Name</label>
+                        <input ng-model="_ctrl.selected.name" type="text">
+                    </md-input-container>
+                    <md-input-container md-no-float>
+                        <label>Email</label>
+                        <input ng-model="_ctrl.selected.email" type="text">
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Address</label>
+                        <input ng-model="_ctrl.selected.address"  ng-required="true">
+                    </md-input-container>
+                    <md-input-container md-no-float>
+                        <label>City</label>
+                        <input ng-model="_ctrl.selected.city" type="text" >
+                    </md-input-container>
+                    <md-input-container md-no-float>
+                        <label>Phone</label>
+                        <input ng-model="_ctrl.selected.phone" type="text">
+                    </md-input-container>
+                </md-content>
+                <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                    <md-button class="md-raised md-info" ng-click="_ctrl.createCustomer()">Add</md-button>
+                    <md-button class="md-raised md-primary" ng-click="_ctrl.saveCustomer()">Save</md-button>
+                    <md-button class="md-raised md-danger" ng-click="_ctrl.cancelEdit()">Cancel</md-button>
+                    <md-button class="md-raised md-warn" ng-click="_ctrl.deleteCustomer()">Delete</md-button>
+                </section>
+            </div>
+        </md-content>
+
+    </div>
+</div>

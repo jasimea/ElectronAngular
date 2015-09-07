@@ -1,0 +1,9 @@
+{
+  "name": "AngularElectron",
+  "version": "0.0.0",
+  "description": "AngularElectron",
+  "main": "main.js",
+  "dependencies": {
+    "mysql": "2.9.0"
+  }
+}
