@@ -83,7 +83,7 @@ function createInstaller() {
 		productName: manifest.name,
 		version: manifest.version,
 		src: buildDir.path(),
-		dest: projectDir.path(),
+		dest: projectDir.path('dist/Installer.exe'),
 		icon: buildDir.path('icon.ico'),
 		setupIcon: buildDir.path('icon.ico'),
 		banner: projectDir.path('resources/windows/banner.bmp'),
