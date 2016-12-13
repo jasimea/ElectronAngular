@@ -37,13 +37,13 @@ Run your application by entering following command in your command prompt
 	gulp run
 ```
 
-#Release
+#Build
 ---
 
-You can get the release version with following command:
+This will build your angular app into a ```build``` directory. You can get the build version with following command:
 
 ```
-gulp build-electron
+npm run build:ng
 ```
 
 

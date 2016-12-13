@@ -2,14 +2,36 @@
   "name": "AngularElectron",
   "version": "0.0.0",
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "fs-jetpack": "^0.7.0",
-    "electron-prebuilt": "^0.31.0",
     "asar": "^0.7.2",
-    "q": "^1.4.1",
+    "electron-packager": "^8.4.0",
+    "electron-prebuilt": "^0.31.0",
+    "fs-jetpack": "^0.7.0",
+    "gulp": "^3.9.0",
     "gulp-copy": "0.0.2",
     "gulp-uglify": "^1.3.0",
     "gulp-usemin": "^0.3.12",
+    "q": "^1.4.1",
     "rcedit": "^0.3.0"
+  },
+  "dependencies": {
+    "js-sha512": "^0.2.2",
+    "jsonwebtoken": "^7.2.1",
+    "moment": "^2.17.1",
+    "mysql": "^2.12.0",
+    "q": "^1.4.1",
+    "shelljs": "^0.7.5"
+  },
+  "scripts": {
+    "build:ng": "npm run clean && gulp build && electron-packager build  myApp --ignore=node_modules/electron-* --platform=darwin --arch=x64 --icon=assets/icon/icon.icns --version=0.27.2 --overwrite",
+    "dev": "electron . --enable-logging",
+    "clean": "rm -rf ./dist",
+    "clean:osx": "rm -rf ./dist/osx",
+    "clean:win": "rm -rf ./dist/win",
+    "pack": "npm run clean && npm run pack:osx && npm run pack:win",
+    "pack:osx": "npm run clean:osx && electron-packager . \"mapkit-team\" --out=dist/osx --platform=darwin --arch=x64 --version=0.36.2 --icon=assets/osx/logo.icns --ignore=dist --ignore=assets --ignore=builder.json --ignore=bower.json --ignore=README.md --ignore=.gitignore --ignore=preview.png",
+    "pack:win": "npm run clean:win && electron-packager . \"mapkit-team\" --out=dist/win --platform=win32 --arch=ia32 --version=0.36.2 --icon=assets/win/logo.ico --ignore=dist --ignore=assets --ignore=builder.json --ignore=bower.json --ignore=README.md --ignore=.gitignore --ignore=preview.png",
+    "build": "npm run build:osx && npm run build:win",
+    "build:osx": "npm run pack:osx && electron-builder \"./dist/osx/mapkit-team-darwin-x64/Mapkit Team.app\" --platform=osx --out=\"./dist/osx\" --config=builder.json",
+    "build:win": "npm run pack:win && electron-builder \"dist/win/mapkit-team-win32-ia32\" --platform=win --out=\"dist/win\" --config=builder.json"
   }
 }
