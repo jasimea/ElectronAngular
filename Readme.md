@@ -4,7 +4,7 @@ This sample application demonstrate how to create a desktop application using An
 
 
 
-#Install
+# Install
 --- 
 
 Install dependencies.
@@ -28,7 +28,7 @@ npm install
 ```
 
 
-#Run 
+# Run 
 ---
 
 Run your application by entering following command in your command prompt
@@ -37,7 +37,7 @@ Run your application by entering following command in your command prompt
 	gulp run
 ```
 
-#Release
+# Release
 ---
 
 You can get the release version with following command:
